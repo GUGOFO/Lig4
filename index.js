@@ -1,3 +1,20 @@
+/*   <3 FEITO SEM CHAT, GEMINI, IA OU QUALQUER COISA ASSIM <3
+
+  Caso vc estaja aq para ver se o chat fez isso n se preocupe,
+  esse repositorio foi feito sem a ajuda de IAs, ele serve para me ajudar
+  a virar um programador melhor e não para "preencher Github"
+  Agora fique com minhas considerações finais sobre esse projeto (boas e ruins skaska)
+
+  1 - Vou ser bem sincero, estou extremamente satisfeito com que fiz (so podia melhorar no CSS ksks), 
+  não identifiquei nenhum erro e consegui iniciar e finalizar o projeto em
+  um dia, claro, sei que esse projeto é pequeno, porem sinto que esses projetos
+  realmente estão melhorando minha capacidade de fazer codigo em JS HTML CSS
+
+  2 - Acho que agora posso modeificar oq está la em cima para algo menos agressivo kksskaksa
+
+  Dps disso ai voce pode ficar com o codigo 
+*/
+
 const jogo = document.getElementById("jogo");
 const colunas = jogo.children;
 let matriz = Array.from({length: 6}, () => Array(7).fill(0));
