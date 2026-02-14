@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#titulo{
+    margin: 0;
+}
+
+#jogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+    height: 72vh;
+    width: 84vh;
+    padding: 2vh;
+    border-radius: 4vh;
+}
+
+.coluna{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    height: 72vh;
+    width: 12vh;
+}
+
+.buraco{
+    background-color: white;
+    height: 12vh;
+    width: 12vh;
+    border-radius: 50%;
+}
