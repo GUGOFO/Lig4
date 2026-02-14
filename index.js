@@ -38,6 +38,7 @@ Array.from(colunas).forEach(coluna => {
                 let linhaPeça = Number(buracos[i].id);
                 let colunaPeça = Number(coluna.id.slice(6));
                 if(AlguemVenceu(linhaPeça, colunaPeça)){
+                    CriarDivDesativadora();
                     jogador == "azul" ? vitoriasAzul++ : vitoriasAmarelo++;
                     telaDeVitoria.style.visibility = "visible"
                     telaDeVitoria.style.boxShadow = `0vh 0vh 4vh ${jogador == "azul" ? "blue" : "yellow"}`;
@@ -54,6 +55,8 @@ Array.from(colunas).forEach(coluna => {
 btnReiniciar.addEventListener("click", () => {
     matriz = Array.from({length: 6}, () => Array(7).fill(0));
     telaDeVitoria.style.visibility = "hidden"
+    const blocker = document.getElementById("blocker");
+    if(blocker) blocker.remove();
     Array.from(colunas).forEach(coluna => {
         Array.from(coluna.children).forEach(buraco => {
             buraco.classList.replace(buraco.classList[1], "vazio")
@@ -144,4 +147,19 @@ function CriarTelaDeVitoria(){
     telaDeVitoria.style.visibility = "hidden"
     document.body.append(telaDeVitoria);
     return telaDeVitoria;
+}
+
+function CriarDivDesativadora(){
+    const divDesativadora = document.createElement("div")
+
+    divDesativadora.id = "blocker";
+    divDesativadora.style.height = "100vh";
+    divDesativadora.style.width = "100vw";
+    divDesativadora.style.position = "fixed";
+    divDesativadora.style.top = "0";
+    divDesativadora.style.left = "0";
+    divDesativadora.style.zIndex = "5";
+    divDesativadora.style.backgroundColor = "transparent";
+
+    document.body.append(divDesativadora)
 }
