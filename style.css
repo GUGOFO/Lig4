@@ -7,9 +7,11 @@ body{
     align-items: center;
     flex-direction: column;
     gap: 2vh;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#titulo{
+
+h1{
     margin: 0;
 }
 
@@ -18,7 +20,7 @@ body{
     justify-content: center;
     align-items: center;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-
+    
     background-color: red;
     height: 77vh;
     width: 90vh;
@@ -64,3 +66,46 @@ body{
     background-color: rgba(255, 255, 79, 0.925);
 }
 
+#painelDeVitoria {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 50vh;
+    width: 50vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0vh 0vh 4vh blue;
+    border-radius: 15%;
+    gap: 2vh;
+}
+
+#jogarNovamente{
+    background-color: rgb(0, 0, 0);
+    height: 10vh;
+    width: 35vh;
+    border-radius: 4vh;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 3.5vh;
+    font-weight: bold;
+}
+
+#placar{
+    font-size: 7vh;
+    color: white;
+}
+
+#resultado{
+    color: white;
+}
