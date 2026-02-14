@@ -9,8 +9,7 @@ Array.from(colunas).forEach(coluna => {
     coluna.addEventListener("mouseover", () => {
         for(let i = 0; i < 5; i++){
             if(buracos[i + 1].classList[1] != "vazio" &&
-               buracos[i + 1].classList[1] != "azulFantasma" &&
-               buracos[i + 1].classList[1] != "amareloFantasma" &&
+               buracos[i + 1].classList[1] != `${jogador}Fantasma` &&
                buracos[i].classList[1] == "vazio"){
                 buracos[i].classList.replace("vazio",`${jogador}Fantasma`);
                 break;
@@ -21,10 +20,8 @@ Array.from(colunas).forEach(coluna => {
 
     coluna.addEventListener("mouseout", () => {
         for(let i = 0; i < 6; i++){
-            if(buracos[i].classList[1] == "azulFantasma")
-                buracos[i].classList.replace("azulFantasma","vazio");
-            if(buracos[i].classList[1] == "amareloFantasma")
-                buracos[i].classList.replace("amareloFantasma","vazio");
+            if(buracos[i].classList[1] == `${jogador}Fantasma`)
+                buracos[i].classList.replace(`${jogador}Fantasma`,"vazio");
         };
     });
 
