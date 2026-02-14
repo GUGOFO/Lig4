@@ -33,7 +33,7 @@ Array.from(colunas).forEach(coluna => {
 
                 let linhaPeça = Number(buracos[i].id);
                 let colunaPeça = Number(coluna.id.slice(6));
-                if(AlguemVenceu(linhaPeça, colunaPeça)) console.log("VENCEUU")
+                if(AlguemVenceu(linhaPeça, colunaPeça)) console.log(`${jogador} venceu`)
 
                 jogador == "azul" ? jogador = "amarelo" : jogador = "azul";
             }
@@ -45,23 +45,61 @@ function AlguemVenceu(linhaPeça, colunaPeça){
     let peça = jogador == "azul" ? 1 : 2;
     matriz[linhaPeça][colunaPeça] = peça;
 
-    console.log(matriz)
-    return verCimaBaixo(linhaPeça, colunaPeça, peça);
+    return (venceuCimaBaixo(linhaPeça, colunaPeça, peça) ||
+            venceuEsquerdaDireita(linhaPeça, colunaPeça, peça) ||
+            venceuDiagonalCimaBaixo(linhaPeça, colunaPeça, peça) ||
+            venceuDiagonalBaixoCima(linhaPeça, colunaPeça, peça));
 }
 
-function verCimaBaixo(linhaPeça, colunaPeça, peça){
+function venceuCimaBaixo(linhaPeça, colunaPeça, peça){
     let conexoes = 1;
-
     for (let l = linhaPeça + 1, c = colunaPeça; l < 6; l++) {
         if (matriz[l][c] == peça) conexoes++;
         else break;
     }
-
     for (let l = linhaPeça - 1, c = colunaPeça; l >= 0; l--) {
         if (matriz[l][c] == peça) conexoes++;
         else break;
     }
-    console.log(`${conexoes}`)
+    return conexoes >= 4;
+}
+
+function venceuEsquerdaDireita(linhaPeça, colunaPeça, peça){
+    let conexoes = 1;
+    for (let l = linhaPeça, c = colunaPeça + 1; c < 7; c++) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    for (let l = linhaPeça, c = colunaPeça - 1; c >= 0; c--) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    return conexoes >= 4;
+}
+
+function venceuDiagonalCimaBaixo(linhaPeça, colunaPeça, peça){
+    let conexoes = 1;
+    for (let l = linhaPeça + 1, c = colunaPeça + 1; c < 7 & l < 6; c++, l++) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    for (let l = linhaPeça - 1, c = colunaPeça - 1; c >= 0 &&  l >= 0; c--, l--) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    return conexoes >= 4;
+}
+
+function venceuDiagonalBaixoCima(linhaPeça, colunaPeça, peça){
+    let conexoes = 1;
+    for (let l = linhaPeça - 1, c = colunaPeça + 1; c < 7 && l >= 0; c++, l--) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    for (let l = linhaPeça + 1, c = colunaPeça - 1; c >= 0 &&  l < 6; c--, l++) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
     return conexoes >= 4;
 }
 
