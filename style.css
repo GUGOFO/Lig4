@@ -50,7 +50,15 @@ body{
     background-color: blue;
 }
 
+.azulFantasma{
+    background-color: rgba(78, 78, 255, 0.904);
+}
+
 .amarelo{
     background-color: yellow;
+}
+
+.amareloFantasma{
+    background-color: rgba(255, 255, 79, 0.925);
 }
 
