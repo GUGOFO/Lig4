@@ -18,8 +18,9 @@ body{
     align-items: center;
 
     background-color: red;
-    height: 72vh;
-    width: 84vh;
+    height: 77vh;
+    width: 90vh;
+    gap: 1vh;
     padding: 2vh;
     border-radius: 4vh;
 }
@@ -30,13 +31,26 @@ body{
     align-items: center;
     flex-direction: column;
     
-    height: 72vh;
+    height: 77vh;
     width: 12vh;
+    gap: 1vh;
 }
 
 .buraco{
-    background-color: white;
     height: 12vh;
     width: 12vh;
     border-radius: 50%;
 }
+
+.vazio{
+    background-color: white;
+}
+
+.azul{
+    background-color: blue;
+}
+
+.amarelo{
+    background-color: yellow;
+}
+
