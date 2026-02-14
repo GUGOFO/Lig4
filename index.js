@@ -1,4 +1,5 @@
 const jogo = document.getElementById("jogo");
+const matriz = Array.from({length: 6}, () => Array(7).fill(0));
 const colunas = jogo.children;
 let jogador = "azul";
 
@@ -29,16 +30,40 @@ Array.from(colunas).forEach(coluna => {
         for(let i = 0; i < 6; i++){
             if(buracos[i].classList[1] == `${jogador}Fantasma`){
                 buracos[i].classList.replace(`${jogador}Fantasma`, `${jogador}`)
+
+                let linhaPeça = Number(buracos[i].id);
+                let colunaPeça = Number(coluna.id.slice(6));
+                if(AlguemVenceu(linhaPeça, colunaPeça)) console.log("VENCEUU")
+
                 jogador == "azul" ? jogador = "amarelo" : jogador = "azul";
-                
-                let linhaPeça = buracos[i].id;
-                let colunaPeça = coluna.id.slice(6,7);
-                console.log(`Linha: ${linhaPeça} Coluna: ${colunaPeça}`)
-                
             }
         }
     })
 });
+
+function AlguemVenceu(linhaPeça, colunaPeça){
+    let peça = jogador == "azul" ? 1 : 2;
+    matriz[linhaPeça][colunaPeça] = peça;
+
+    console.log(matriz)
+    return verCimaBaixo(linhaPeça, colunaPeça, peça);
+}
+
+function verCimaBaixo(linhaPeça, colunaPeça, peça){
+    let conexoes = 1;
+
+    for (let l = linhaPeça + 1, c = colunaPeça; l < 6; l++) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+
+    for (let l = linhaPeça - 1, c = colunaPeça; l >= 0; l--) {
+        if (matriz[l][c] == peça) conexoes++;
+        else break;
+    }
+    console.log(`${conexoes}`)
+    return conexoes >= 4;
+}
 
 function CriarJogo() {
     for(let i = 0; i < 7; i++){
