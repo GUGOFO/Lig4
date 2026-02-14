@@ -1,9 +1,13 @@
 const jogo = document.getElementById("jogo");
-const matriz = Array.from({length: 6}, () => Array(7).fill(0));
 const colunas = jogo.children;
+let matriz = Array.from({length: 6}, () => Array(7).fill(0));
 let jogador = "azul";
+let vitoriasAzul = 0
+let vitoriasAmarelo = 0
 
 CriarJogo();
+const telaDeVitoria = CriarTelaDeVitoria();
+const btnReiniciar = document.getElementById("jogarNovamente");
 
 Array.from(colunas).forEach(coluna => {
     const buracos = coluna.children;
@@ -33,12 +37,28 @@ Array.from(colunas).forEach(coluna => {
 
                 let linhaPeça = Number(buracos[i].id);
                 let colunaPeça = Number(coluna.id.slice(6));
-                if(AlguemVenceu(linhaPeça, colunaPeça)) console.log(`${jogador} venceu`)
+                if(AlguemVenceu(linhaPeça, colunaPeça)){
+                    jogador == "azul" ? vitoriasAzul++ : vitoriasAmarelo++;
+                    telaDeVitoria.style.visibility = "visible"
+                    telaDeVitoria.style.boxShadow = `0vh 0vh 4vh ${jogador == "azul" ? "blue" : "yellow"}`;
+                    telaDeVitoria.children[0].innerHTML = `<span style="color: ${jogador == "azul" ? "blue" : "yellow"};">${jogador}</span> venceu`;
+                    telaDeVitoria.children[1].innerHTML = `<samp style="color: blue;">${vitoriasAzul}</samp> x <samp style="color: yellow;">${vitoriasAmarelo}</samp>`;
+                }
 
                 jogador == "azul" ? jogador = "amarelo" : jogador = "azul";
             }
         }
     })
+});
+
+btnReiniciar.addEventListener("click", () => {
+    matriz = Array.from({length: 6}, () => Array(7).fill(0));
+    telaDeVitoria.style.visibility = "hidden"
+    Array.from(colunas).forEach(coluna => {
+        Array.from(coluna.children).forEach(buraco => {
+            buraco.classList.replace(buraco.classList[1], "vazio")
+        })
+    });
 });
 
 function AlguemVenceu(linhaPeça, colunaPeça){
@@ -113,4 +133,15 @@ function CriarJogo() {
                               <div class="buraco vazio" id="4"></div>
                               <div class="buraco vazio" id="5"></div>`
     }
+}
+
+function CriarTelaDeVitoria(){
+    const telaDeVitoria = document.createElement("div")
+    telaDeVitoria.id = "painelDeVitoria"
+    telaDeVitoria.innerHTML = ` <h1 id="resultado">ninguem venceu</h1>
+                                <h1 id="placar"><samp style="color: blue;">0</samp> x <samp style="color: yellow;">0</samp></h1>
+                                <div id="jogarNovamente">Jogar Novamente</div>`
+    telaDeVitoria.style.visibility = "hidden"
+    document.body.append(telaDeVitoria);
+    return telaDeVitoria;
 }
