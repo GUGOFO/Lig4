@@ -6,6 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 2vh;
 }
 
 #titulo{
@@ -16,6 +17,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 
     background-color: red;
     height: 77vh;

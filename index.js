@@ -30,7 +30,11 @@ Array.from(colunas).forEach(coluna => {
             if(buracos[i].classList[1] == `${jogador}Fantasma`){
                 buracos[i].classList.replace(`${jogador}Fantasma`, `${jogador}`)
                 jogador == "azul" ? jogador = "amarelo" : jogador = "azul";
-                console.log(jogador)
+                
+                let linhaPeça = buracos[i].id;
+                let colunaPeça = coluna.id.slice(6,7);
+                console.log(`Linha: ${linhaPeça} Coluna: ${colunaPeça}`)
+                
             }
         }
     })
@@ -39,11 +43,11 @@ Array.from(colunas).forEach(coluna => {
 function CriarJogo() {
     for(let i = 0; i < 7; i++){
         const coluna = document.getElementById(`coluna${i}`)
-        coluna.innerHTML = `<div class="buraco vazio"></div>
-                              <div class="buraco vazio"></div>
-                              <div class="buraco vazio"></div>
-                              <div class="buraco vazio"></div>
-                              <div class="buraco vazio"></div>
-                              <div class="buraco vazio"></div>`
+        coluna.innerHTML = `  <div class="buraco vazio" id="0"></div>
+                              <div class="buraco vazio" id="1"></div>
+                              <div class="buraco vazio" id="2"></div>
+                              <div class="buraco vazio" id="3"></div>
+                              <div class="buraco vazio" id="4"></div>
+                              <div class="buraco vazio" id="5"></div>`
     }
 }
